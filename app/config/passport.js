@@ -46,8 +46,8 @@ module.exports = function(passport) {
     // User.findOne won't fire until we have all our data back from Twitter
         process.nextTick(function() {
 			console.log(profile.username);
-             User.find({ 'twitter.id' : profile.id }, function(err, user) {
-
+             User.findOne({ 'twitter.id' : profile.id }, function(err, user) {
+console.log(profile.username);
                 // if there is an error, stop everything and return that
                 // ie an error connecting to the database
                 if (err)
