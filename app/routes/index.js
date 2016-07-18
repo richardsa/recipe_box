@@ -2,10 +2,12 @@
 
 var path = process.cwd();
 var UserHandler = require(path + '/app/controllers/userHandler.server.js');
+var ImageHandler = require(path + '/app/controllers/imageHandler.server.js');
 // app/routes.js
 
 module.exports = function(app, passport) {
     var userHandler = new UserHandler();
+    var imageHandler = new ImageHandler();
 
     // route for home page
     app.get('/', function(req, res) {
@@ -26,7 +28,11 @@ module.exports = function(app, passport) {
         .get(isLoggedIn, function(req, res) {
             res.sendFile(path + '/public/profile.html');
         });
-
+        
+    // route for showing all images 
+    app.route('/images/all')
+        .get(imageHandler.getAll);
+        
     // route for logging out
     app.get('/logout', function(req, res) {
         req.logout();
@@ -62,7 +68,7 @@ module.exports = function(app, passport) {
     
     //image upload 
     app.route('/upload/api')
-        .post(userHandler.postUpload);
+        .post(imageHandler.postUpload);
     //delete tables
     app.route('/testing1')
         .get(userHandler.getDrop);
