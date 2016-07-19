@@ -44,6 +44,19 @@
     ajaxFunctions.ajaxRequest('GET', appUrl + "/images/all", getImages);
 
   }
+  
+  // if wall page - load all of user's images by running getWall function
+  if (window.location.pathname.slice(0,6) === "/wall/"){
+    var user = window.location.pathname.slice(6)
+    console.log(appUrl + "/user/" + user)
+    ajaxFunctions.ajaxRequest('GET', appUrl + "/user/" + user, getWall);
+  }
+
+
+  function getWall(data){
+    console.log(data);
+    
+  }
 
   // main get all images function 
   function getImages(data) {
@@ -54,13 +67,15 @@
       output += "<div class='grid-item text-center'>"
       var imageURL = response[i].imageURL;
       var imageCaption = response[i].imageCaption;
-      var user = response[i].username;;
-      var likes = response[i].likes;;
+      var user = response[i].username;
+      var likes = response[i].likes;
+      var userID = response[i].twitterID;
+      var dbID = response[i]['_id'];
       output += '<div class="img-space">';
       output += '<img src="' + imageURL + '" class="img-rounded img-main" alt="...">';
       output += '</div>';
       output += '<h3>' + imageCaption + '</h3>'
-      output += '<p>' + user + '<p>';
+      output += '<p><a href="/wall/' + userID + '">' + user + '</a><p>';
       output += '<p>Likes:' + likes + '</p>'
       output += "</div>"
       console.log(output);

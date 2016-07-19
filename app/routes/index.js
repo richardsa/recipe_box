@@ -17,7 +17,7 @@ module.exports = function(app, passport) {
         res.sendFile(path + '/public/testing.html');
     });
 
-
+    // login page
     app.route('/login')
         .get(function(req, res) {
             res.sendFile(path + '/public/login.html');
@@ -28,6 +28,15 @@ module.exports = function(app, passport) {
         .get(isLoggedIn, function(req, res) {
             res.sendFile(path + '/public/profile.html');
         });
+    // route for showing individual wall page
+    app.route('/wall/:id')
+    .get(function(req, res){
+        res.sendFile(path + '/public/wall.html');
+    });
+    
+    // route for returning individual wall images 
+    app.route('/user/:id')
+        .get(imageHandler.getWall);
         
     // route for showing all images 
     app.route('/images/all')
@@ -73,6 +82,8 @@ module.exports = function(app, passport) {
     app.route('/testing1')
         .get(userHandler.getDrop);
 };
+
+
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {

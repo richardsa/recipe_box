@@ -44,6 +44,26 @@ function imageHandler() {
         }
       });
   };
+     // return all community images
+  this.getWall = function(req, res) {
+  var id =  req.params.id;
+  console.log(id);
+ 
+ Images
+      .find({twitterID: id})
+      .lean().exec(function(err, result) {
+        if (err) {
+          throw err;
+        }
+        if (result) {
+          res.json(result);
+        } else {
+          res.send({
+            error: "No images in the community at this time"
+          });
+        }
+      });
+  };
 
 }
 
