@@ -7,10 +7,12 @@ function imageHandler() {
     //upload image 
     this.postUpload = function(req, res){
         var twitterID = req.user.twitter.id;
+        var username = req.user.twitter.username;
         var imageCaption = req.query.imageCaption;
         var imageURL = req.query.imageURL;
         console.log("twitterID " + twitterID + "imageCaption " + imageCaption + "imageURL " + imageURL );
         Images.collection.insert({
+          username: username,
           twitterID: twitterID ,
           imageCaption: imageCaption,
           likes: 0,
