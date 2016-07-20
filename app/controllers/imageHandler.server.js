@@ -4,33 +4,33 @@ var Users = require('../models/users.js');
 var Images = require('../models/images.js');
 
 function imageHandler() {
-    //upload image 
-    this.postUpload = function(req, res){
-        var twitterID = req.user.twitter.id;
-        var username = req.user.twitter.username;
-        var imageCaption = req.query.imageCaption;
-        var imageURL = req.query.imageURL;
-        console.log("twitterID " + twitterID + "imageCaption " + imageCaption + "imageURL " + imageURL );
-        Images.collection.insert({
-          username: username,
-          twitterID: twitterID ,
-          imageCaption: imageCaption,
-          likes: 0,
-          imageURL: imageURL,
-        }, function(err, updatedResult) {
-          if (err) {
-            throw err;
-          }
-          console.log(JSON.stringify(updatedResult));
-          res.send(updatedResult);
-        });
-    };
-  
-    // return all community images
+  //upload image 
+  this.postUpload = function(req, res) {
+    var twitterID = req.user.twitter.id;
+    var username = req.user.twitter.username;
+    var imageCaption = req.query.imageCaption;
+    var imageURL = req.query.imageURL;
+    console.log("twitterID " + twitterID + "imageCaption " + imageCaption + "imageURL " + imageURL);
+    Images.collection.insert({
+      username: username,
+      twitterID: twitterID,
+      imageCaption: imageCaption,
+      likes: 0,
+      imageURL: imageURL,
+    }, function(err, updatedResult) {
+      if (err) {
+        throw err;
+      }
+      console.log(JSON.stringify(updatedResult));
+      res.send(updatedResult);
+    });
+  };
+
+  // return all community images
   this.getAll = function(req, res) {
 
     Images
-      .find({})
+      .find({}).sort({_id:-1})
       .lean().exec(function(err, result) {
         if (err) {
           throw err;
@@ -44,13 +44,14 @@ function imageHandler() {
         }
       });
   };
-     // return all community images
+  // return all community images
   this.getWall = function(req, res) {
-  var id =  req.params.id;
-  console.log(id);
- 
- Images
-      .find({twitterID: id})
+    var id = req.params.id;
+  
+    Images
+      .find({
+        twitterID: id
+      })
       .lean().exec(function(err, result) {
         if (err) {
           throw err;

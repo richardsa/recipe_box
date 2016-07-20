@@ -15,6 +15,7 @@
 
   ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, function(data) {
     var userObject = JSON.parse(data);
+    console.log(JSON.stringify(userObject));
     if (userObject.hasOwnProperty('error')) {
       document.querySelector("#loginButton").innerHTML = '<a href="/login">Login</a>';
       return;
@@ -22,13 +23,16 @@
       document.querySelector("#loginButton").innerHTML = '<a href="/logout">Logout</a>';
       document.querySelector("#profileLink").innerHTML = '<a href="/profile">Profile</a>';
       document.querySelector("#uploadLink").innerHTML = '<a href="/upload">Upload</a>';
-
+      
       if (userObject.displayName !== null && displayName !== null) {
         updateHtmlElement(userObject, displayName, 'displayName');
       }
-
+    
+      if (userObject.id !== null) {
+        twitterId = userObject.id;
+      }
       if (profileId !== null) {
-        twitterId = profileId;
+      //  twitterId = profileId;
         updateHtmlElement(userObject, profileId, 'id');
       }
 
@@ -48,8 +52,7 @@
   // if wall page - load all of user's images by running getWall function
   if (window.location.pathname.slice(0,6) === "/wall/"){
     var user = window.location.pathname.slice(6)
-    console.log(appUrl + "/user/" + user)
-    ajaxFunctions.ajaxRequest('GET', appUrl + "/user/" + user, getWall);
+    ajaxFunctions.ajaxRequest('GET', appUrl + "/user/" + user, getImages);
   }
 
 
@@ -61,7 +64,7 @@
   // main get all images function 
   function getImages(data) {
     var response = JSON.parse(data);
-    console.log(JSON.stringify(response));
+  
     var output = "<div class='grid'>";
     for (var i = 0; i < response.length; i++) {
       output += "<div class='grid-item text-center'>"
@@ -70,15 +73,20 @@
       var user = response[i].username;
       var likes = response[i].likes;
       var userID = response[i].twitterID;
+    
       var dbID = response[i]['_id'];
+      
+      if(userID === twitterId){
+        output += '<div class="pull-right delete-link"><a href="' + appUrl + '/delete/' + dbID + '">X</a></div>';
+      }
       output += '<div class="img-space">';
       output += '<img src="' + imageURL + '" class="img-rounded img-main" alt="...">';
       output += '</div>';
-      output += '<h3>' + imageCaption + '</h3>'
+      output += '<h3>' + imageCaption + '</h3>';
       output += '<p><a href="/wall/' + userID + '">' + user + '</a><p>';
-      output += '<p>Likes:' + likes + '</p>'
-      output += "</div>"
-      console.log(output);
+      output += '<p>Likes:' + likes + '</p>';
+      output += "</div>";
+    
     }
     output += "</div>"
     document.querySelector('#images').innerHTML = output;
