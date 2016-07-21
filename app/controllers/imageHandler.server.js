@@ -44,7 +44,7 @@ function imageHandler() {
         }
       });
   };
-  // return all community images
+  // return user wall
   this.getWall = function(req, res) {
     var id = req.params.id;
   
@@ -65,6 +65,29 @@ function imageHandler() {
         }
       });
   };
+  
+  this.deleteImage = function(req, res){
+    var twitterID = req.user.twitter.id;
+     var id = req.params.id;
+     Images.findOne({
+         twitterID: twitterID,
+         _id: id
+
+       },
+       function(err, image) {
+         if (err) {
+           throw err;
+         }
+         if (image) {
+           image.remove(function(err) {
+             if (err) {
+               throw err;
+             }
+             res.send("image deleted");
+           });
+         }
+       });
+  }
 
 }
 

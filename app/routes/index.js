@@ -34,6 +34,9 @@ module.exports = function(app, passport) {
         res.sendFile(path + '/public/wall.html');
     });
     
+    app.route('/delete/:id')
+    .delete(isLoggedIn, imageHandler.deleteImage);
+    
     // route for returning individual wall images 
     app.route('/user/:id')
         .get(imageHandler.getWall);
