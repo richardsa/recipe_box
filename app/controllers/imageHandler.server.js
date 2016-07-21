@@ -10,7 +10,7 @@ function imageHandler() {
     var username = req.user.twitter.username;
     var imageCaption = req.query.imageCaption;
     var imageURL = req.query.imageURL;
-    console.log("twitterID " + twitterID + "imageCaption " + imageCaption + "imageURL " + imageURL);
+    
     Images.collection.insert({
       username: username,
       twitterID: twitterID,
@@ -21,7 +21,7 @@ function imageHandler() {
       if (err) {
         throw err;
       }
-      console.log(JSON.stringify(updatedResult));
+      
       res.send(updatedResult);
     });
   };
@@ -51,7 +51,7 @@ function imageHandler() {
     Images
       .find({
         twitterID: id
-      })
+      }).sort({_id:-1})
       .lean().exec(function(err, result) {
         if (err) {
           throw err;

@@ -15,7 +15,7 @@
 
   ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, function(data) {
     var userObject = JSON.parse(data);
-    console.log(JSON.stringify(userObject));
+    
     if (userObject.hasOwnProperty('error')) {
       document.querySelector("#loginButton").innerHTML = '<a href="/login">Login</a>';
       return;
@@ -80,12 +80,13 @@
       }
       output += '<div class="img-space">';
       //onError="this.onerror=null;this.src=\'/images/noImage.png'\;" />
-      output += '<img src="' + imageURL + '" onError="this.onerror=null;this.src=\'public/img/noImage.png\';" class="img-rounded img-main" alt="...">';
+      // img error handler from http://stackoverflow.com/a/92819
+      output += '<img src="' + imageURL + '" onError="this.onerror=null;this.src=\'/public/img/noImage.png\';" class="img-rounded img-main" alt="...">';
       //output += '<img src="' + imageURL + '" class="img-rounded img-main" alt="...">';
       output += '</div>';
       output += '<h3>' + imageCaption + '</h3>';
       output += '<p><a href="/wall/' + userID + '">' + user + '</a><p>';
-      output += '<p>Likes:' + likes + '</p>';
+      //output += '<p>Likes:' + likes + '</p>';
       output += "</div>";
 
     }
@@ -101,7 +102,7 @@
   // jquery add books to collection function
   $("#images").on("click", ".delete-link", function() {
     var deleteUrl = appUrl + '/delete/' + $(this).attr('id');
-    console.log(deleteUrl);
+    
     ajaxFunctions.ajaxRequest('DELETE', deleteUrl, function() {
       if (window.location.pathname === "/") {
         ajaxFunctions.ajaxRequest('GET', appUrl + "/images/all", getImages);
