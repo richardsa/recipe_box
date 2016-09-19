@@ -5,6 +5,11 @@ body {
   padding-top: 70px;
 }
 
+.jumbotron, .navbar, .navbar-brand, .navbar-default, .navbar-nav>li>a {
+    background-color: #006400;
+    color: #ffffff!important;
+}
+
 .img-space {min-height:150px; min-width: 150px;}
 .img-main {max-height: 150px; max-width: 150px; padding:10px;}
 

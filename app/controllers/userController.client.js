@@ -22,7 +22,7 @@
     } else {
       document.querySelector("#loginButton").innerHTML = '<a href="/logout">Logout</a>';
       document.querySelector("#profileLink").innerHTML = '<a href="/profile">Profile</a>';
-      document.querySelector("#uploadLink").innerHTML = '<a href="/upload">Upload</a>';
+      document.querySelector("#uploadLink").innerHTML = '<a href="/add-recipe">Add Recipe</a>';
 
       if (userObject.displayName !== null && displayName !== null) {
         updateHtmlElement(userObject, displayName, 'displayName');

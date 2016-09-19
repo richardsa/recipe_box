@@ -16,6 +16,11 @@ module.exports = function(app, passport) {
     app.get('/testing', function(req, res) {
         res.sendFile(path + '/public/testing.html');
     });
+    
+    // all recipes page
+     app.get('/recipes', function(req, res) {
+        res.sendFile(path + '/public/recipes.html');
+    });
 
     // login page
     app.route('/login')
@@ -73,7 +78,7 @@ module.exports = function(app, passport) {
         });
 
     // return upload page 
-    app.route('/upload')
+    app.route('/add-recipe')
         .get(isLoggedIn, function(req, res) {
             res.sendFile(path + '/public/upload.html');
         });
