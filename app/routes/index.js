@@ -39,13 +39,22 @@ module.exports = function(app, passport) {
     .get(function(req, res){
         res.sendFile(path + '/public/wall.html');
     });
+
+    // return individual recipe page
+    app.route('/recipe-api/:id')
+    .get(recipeHandler.getRecipe);
+
+    app.route('/recipe/:id')
+    .get(function(req, res){
+        res.sendFile(path + '/public/recipe.html');
+    });
     
     app.route('/delete/:id')
     .delete(isLoggedIn, imageHandler.deleteImage);
     
     // route for returning individual wall images 
     app.route('/user/:id')
-        .get(imageHandler.getWall);
+        .get(recipeHandler.getWall);
         
     // route for showing all recipes
     app.route('/recipes/all')

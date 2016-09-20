@@ -22,7 +22,7 @@ function recipeHandler() {
       if (err) {
         throw err;
       }
-      console.log(updatedResult)
+      
       res.send(updatedResult);
     });
   };
@@ -38,6 +38,26 @@ function recipeHandler() {
         }
         if (result) {
             console.log(result);
+          res.json(result);
+        } else {
+          res.send({
+            error: "No recipes in the community at this time"
+          });
+        }
+      });
+  };
+  // return individual recipe
+  this.getRecipe = function(req, res) {
+    var id = req.params.id;
+    Recipes
+      .find({
+        _id: id
+      }).sort({_id:-1})
+      .lean().exec(function(err, result) {
+        if (err) {
+          throw err;
+        }
+        if (result) {
           res.json(result);
         } else {
           res.send({
@@ -89,7 +109,7 @@ function recipeHandler() {
            });
          }
        });
-  }
+  };
 
 }
 
