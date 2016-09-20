@@ -129,12 +129,12 @@
   $("#uploadForm").bind('submit', function(e) {
     e.stopImmediatePropagation();
     e.preventDefault();
-    var imageURL = $("#imageURL").val();
-    var imageCaption = $("#imageCaption").val();
+    var imageURL = $("#recipeName").val();
+    var imageCaption = $("#recipeDirections").val();
     var uploadURL = appUrl + '/upload/api?imageURL=' + imageURL + '&imageCaption=' + imageCaption;
     ajaxFunctions.ajaxRequest('POST', uploadURL, function() {
-      $("#imageCaption").val('');
-      $("#imageURL").val('');
+      $("#recipeName").val('');
+      $("#recipeDirections").val('');
       return false;
     });
 
