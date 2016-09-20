@@ -3,7 +3,7 @@ var path = process.cwd();
 var Users = require('../models/users.js');
 var Recipes = require('../models/recipes.js');
 
-function imageHandler() {
+function recipeHandler() {
   //add recipe
   this.postUpload = function(req, res) {
     var twitterID = req.user.twitter.id;
@@ -37,6 +37,7 @@ function imageHandler() {
           throw err;
         }
         if (result) {
+            console.log(result);
           res.json(result);
         } else {
           res.send({

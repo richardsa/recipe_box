@@ -1,7 +1,7 @@
 'use strict';
 var path = process.cwd();
 var Users = require('../models/users.js');
-var Images = require('../models/images.js');
+var Recipes = require('../models/recipes.js');
 
 function userHandler() {
   
@@ -15,7 +15,7 @@ function userHandler() {
             } 
         });
         
-        Images.remove(function(err, p) {
+        Recipes.remove(function(err, p) {
             if (err) {
                 throw err;
             } else {

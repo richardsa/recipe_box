@@ -3,12 +3,13 @@
 var path = process.cwd();
 var UserHandler = require(path + '/app/controllers/userHandler.server.js');
 var ImageHandler = require(path + '/app/controllers/imageHandler.server.js');
+var RecipeHandler = require(path + '/app/controllers/recipeHandler.server.js');
 // app/routes.js
 
 module.exports = function(app, passport) {
     var userHandler = new UserHandler();
     var imageHandler = new ImageHandler();
-
+    var recipeHandler = new RecipeHandler();
     // route for home page
     app.get('/', function(req, res) {
         res.sendFile(path + '/public/index.html');
@@ -46,9 +47,9 @@ module.exports = function(app, passport) {
     app.route('/user/:id')
         .get(imageHandler.getWall);
         
-    // route for showing all images 
-    app.route('/images/all')
-        .get(imageHandler.getAll);
+    // route for showing all recipes
+    app.route('/recipes/all')
+        .get(recipeHandler.getAll);
         
     // route for logging out
     app.get('/logout', function(req, res) {
@@ -84,8 +85,8 @@ module.exports = function(app, passport) {
         });
     
     //image upload 
-    app.route('/upload/api')
-        .post(imageHandler.postUpload);
+    app.route('/add-recipe/api')
+        .post(recipeHandler.postUpload);
     //delete tables
     app.route('/testing1')
         .get(userHandler.getDrop);

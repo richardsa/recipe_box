@@ -30,9 +30,9 @@
 
       if (userObject.id !== null) {
         twitterId = userObject.id;
-        if (window.location.pathname === "/profile") {
+      /*  if (window.location.pathname === "/profile") {
           ajaxFunctions.ajaxRequest('GET', appUrl + "/user/" + twitterId, getImages);
-        }
+        }*/
 
       }
       if (profileId !== null) {
@@ -49,43 +49,45 @@
 
   // if home page - load all community images by running getImages function
   if (window.location.pathname === "/") {
-    ajaxFunctions.ajaxRequest('GET', appUrl + "/images/all", getImages);
+    ajaxFunctions.ajaxRequest('GET', appUrl + "/recipes/all", getRecipes);
 
   }
 
-  // if wall page - load all of user's images by running getImages function
+  /* if wall page - load all of user's images by running getImages function
   if (window.location.pathname.slice(0, 6) === "/wall/") {
     var user = window.location.pathname.slice(6)
     ajaxFunctions.ajaxRequest('GET', appUrl + "/user/" + user, getImages);
-  }
+  }*/
 
   // main get all images function 
-  function getImages(data) {
+  function getRecipes(data) {
     var response = JSON.parse(data);
-
+    console.log(JSON.stringify(response));
     var output = "<div class='grid'>";
     for (var i = 0; i < response.length; i++) {
       output += "<div class='grid-item text-center'>"
-      var imageURL = response[i].imageURL;
+      
+      var recipeIngredients = response[i].recipeIngredients;
+      var recipeName = response[i].recipeName;
+      var recipeDirections = response[i].recipeDirections;
       var imageCaption = response[i].imageCaption;
       var user = response[i].username;
-      var likes = response[i].likes;
       var userID = response[i].twitterID;
 
       var dbID = response[i]['_id'];
 
-      if (userID === twitterId) {
+    //  if (userID === twitterId) {
         //output += '<div class="pull-right delete-link"><a href="' + appUrl + '/delete/' + dbID + '">X</a></div>';
-        output += '<div class="pull-right delete-link" id="' + dbID + '">X</div>';
-      }
+      //  output += '<div class="pull-right delete-link" id="' + dbID + '">X</div>';
+    //  }
       output += '<div class="img-space">';
       //onError="this.onerror=null;this.src=\'/images/noImage.png'\;" />
       // img error handler from http://stackoverflow.com/a/92819
-      output += '<img src="' + imageURL + '" onError="this.onerror=null;this.src=\'/public/img/noImage.png\';" class="img-rounded img-main" alt="...">';
       //output += '<img src="' + imageURL + '" class="img-rounded img-main" alt="...">';
       output += '</div>';
-      output += '<h3>' + imageCaption + '</h3>';
+      output += '<h3>' + recipeName  + '</h3>';
       output += '<p><a href="/wall/' + userID + '">' + user + '</a><p>';
+     output += '<p>' + recipeName + '</p>'
       //output += '<p>Likes:' + likes + '</p>';
       output += "</div>";
 
@@ -129,12 +131,15 @@
   $("#uploadForm").bind('submit', function(e) {
     e.stopImmediatePropagation();
     e.preventDefault();
-    var imageURL = $("#recipeName").val();
-    var imageCaption = $("#recipeDirections").val();
-    var uploadURL = appUrl + '/upload/api?imageURL=' + imageURL + '&imageCaption=' + imageCaption;
+    var recipeName = $("#recipeName").val();
+    var recipeIngredients = $("#recipeIngredients").val();
+    var recipeDirections = $("#recipeDirections").val();
+    var uploadURL = appUrl + '/add-recipe/api?recipeName=' + recipeName + '&recipeIngredients=' + recipeIngredients + '&recipeDirections=' + recipeDirections;
+    console.log(uploadURL)
     ajaxFunctions.ajaxRequest('POST', uploadURL, function() {
       $("#recipeName").val('');
       $("#recipeDirections").val('');
+     $("#recipeIngredients").val('');
       return false;
     });
 
