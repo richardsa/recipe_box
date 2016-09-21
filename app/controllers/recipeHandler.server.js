@@ -6,6 +6,7 @@ var Recipes = require('../models/recipes.js');
 function recipeHandler() {
   //add recipe
   this.postUpload = function(req, res) {
+    console.log(req);
     var twitterID = req.user.twitter.id;
     var username = req.user.twitter.username;
     var recipeName = req.query.recipeName;
@@ -25,6 +26,7 @@ function recipeHandler() {
       
       res.send(updatedResult);
     });
+ 
   };
 
   // return all community images

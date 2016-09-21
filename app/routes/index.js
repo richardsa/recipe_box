@@ -96,6 +96,13 @@ module.exports = function(app, passport) {
     //image upload 
     app.route('/add-recipe/api')
         .post(recipeHandler.postUpload);
+  /*   app.route('/add-recipe/api')
+        .post(function(req, res) {
+          //  var poll = '/polls/' + req.body.pollID;
+            recipeHandler.postUpload(req.body);
+           // res.redirect(poll);
+        });*/
+    
     //delete tables
     app.route('/testing1')
         .get(userHandler.getDrop);
