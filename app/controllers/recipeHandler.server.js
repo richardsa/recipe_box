@@ -6,13 +6,13 @@ var Recipes = require('../models/recipes.js');
 function recipeHandler() {
   //add recipe
   this.postUpload = function(req, res) {
-    console.log(req);
-    var twitterID = req.user.twitter.id;
-    var username = req.user.twitter.username;
-    var recipeName = req.query.recipeName;
-    var recipeIngredients = req.query.recipeIngredients;
-    var recipeDirections = req.query.recipeDirections;
-    
+   console.log(req);
+    var twitterID = req.twitter.twitter.id;
+    var username = req.twitter.twitter.username;
+    var recipeName = req.recipeName;
+    var recipeIngredients = req.recipeIngredients;
+    var recipeDirections = req.recipeDirections;
+    console.log(twitterID + " " + username +   " " + recipeName +  " " + recipeIngredients +  " " + recipeDirections);
     Recipes.collection.insert({
       username: username,
       twitterID: twitterID,
@@ -23,8 +23,8 @@ function recipeHandler() {
       if (err) {
         throw err;
       }
-      
-      res.send(updatedResult);
+      console.log(JSON.stringify(updatedResult))
+      res.end();
     });
  
   };

@@ -1,12 +1,16 @@
 'use strict';
 
 var path = process.cwd();
+var bodyParser = require('body-parser');
 var UserHandler = require(path + '/app/controllers/userHandler.server.js');
 var ImageHandler = require(path + '/app/controllers/imageHandler.server.js');
 var RecipeHandler = require(path + '/app/controllers/recipeHandler.server.js');
 // app/routes.js
 
 module.exports = function(app, passport) {
+    //body parser use from http://expressjs.com/en/api.html
+    app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
     var userHandler = new UserHandler();
     var imageHandler = new ImageHandler();
     var recipeHandler = new RecipeHandler();
@@ -94,14 +98,17 @@ module.exports = function(app, passport) {
         });
     
     //image upload 
-    app.route('/add-recipe/api')
-        .post(recipeHandler.postUpload);
-  /*   app.route('/add-recipe/api')
+  /*  app.route('/add-recipe/api')
+        .post(recipeHandler.postUpload);*/
+   app.route('/add-recipe/api')
         .post(function(req, res) {
+            console.log("this the body " + JSON.stringify(req.body));
+            var x = req.body;
+x.twitter = req.user;
           //  var poll = '/polls/' + req.body.pollID;
-            recipeHandler.postUpload(req.body);
+            recipeHandler.postUpload(x);
            // res.redirect(poll);
-        });*/
+        });
     
     //delete tables
     app.route('/testing1')

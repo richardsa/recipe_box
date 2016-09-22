@@ -139,27 +139,28 @@
         var recipeIngredients = $("#recipeIngredients").val();
         var recipeDirections = $("#recipeDirections").val();
         var uploadURL = appUrl + '/add-recipe/api?recipeName=' + recipeName + '&recipeIngredients=' + recipeIngredients + '&recipeDirections=' + recipeDirections;
-      /*  $.ajax(
+        $.ajax(
         {
-            url : '/add-recipe/api',
+            url : 'add-recipe/api',
             type: "post",
             data : postData,
+            //data: {testing: "testing123"},
             success:function(data, textStatus, jqXHR) 
             {
                 alert(data);
             },
-            error: function(jqXHR, textStatus, errorThrown) 
+            error: function(data, textStatus, errorThrown) 
             {
                 alert(data);     
             }
-        });*/
+        });
       //  console.log(uploadURL)
-      ajaxFunctions.ajaxRequest('POST', uploadURL, function() {
+      /*ajaxFunctions.ajaxRequest('POST', uploadURL, function() {
             $("#recipeName").val('');
             $("#recipeDirections").val('');
             $("#recipeIngredients").val('');
             return false;
-        });
+        });*/
 
     });
 })();
