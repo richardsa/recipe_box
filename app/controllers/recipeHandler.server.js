@@ -23,8 +23,8 @@ function recipeHandler() {
       if (err) {
         throw err;
       }
-      console.log(JSON.stringify(updatedResult))
-      res.end();
+     // console.log(JSON.stringify(updatedResult));
+      // res.json(updatedResult);
     });
  
   };

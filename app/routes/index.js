@@ -107,7 +107,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 x.twitter = req.user;
           //  var poll = '/polls/' + req.body.pollID;
             recipeHandler.postUpload(x);
-           // res.redirect(poll);
+           res.redirect('/add-recipe');
         });
     
     //delete tables
