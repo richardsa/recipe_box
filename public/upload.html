@@ -12,17 +12,17 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 
-<!-- FormValidation CSS file -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.formvalidation/0.6.1/css/formValidation.min.css">
+  <!-- FormValidation CSS file -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.formvalidation/0.6.1/css/formValidation.min.css">
 
 
 
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified Bootstrap JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<!-- FormValidation plugin and the class supports validating Bootstrap form -->
-<script src="https://cdn.jsdelivr.net/jquery.formvalidation/0.6.1/js/formValidation.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.formvalidation/0.6.1/js/framework/bootstrap.min.js"></script>
+  <!-- FormValidation plugin and the class supports validating Bootstrap form -->
+  <script src="https://cdn.jsdelivr.net/jquery.formvalidation/0.6.1/js/formValidation.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.formvalidation/0.6.1/js/framework/bootstrap.min.js"></script>
   <link href="/public/css/main.css" rel="stylesheet" type="text/css">
 
   <!-- Latest compiled and minified Masonry JavaScript -->
@@ -31,42 +31,42 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
   <script>
-  // adapted from http://bootsnipp.com/snippets/featured/dynamic-form-fields-add-amp-remove
-  /* $(document).ready(function(){
-      var next = 1;
-      $(".add-more").click(function(e){
-          e.preventDefault();
-          console.log("yeah");
-          var addto = "#field" + next;
-          var addRemove = "#field" + (next);
-          next = next + 1;
-          //var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
-          var newIn = '<div class="row" id="recipeIngredientField' + next + '"> <div class="col-sm-9" >'
-          newIn += '<input type="text" name="recipeIngredients' + next + '" class="form-control" id="recipeIngredients' + next + '"" placeholder="Enter the ingredients:">'
-          newIn += '</div>'
-          newIn += '<div class="col-sm-3">'
-          newIn += '<button type="button" class="btn btn-default" aria-label="Add Ingredient">'
-          newIn += '<span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></button>'
-          newIn += ' <button id="remove' + (next - 1) + '" type="button" class="btn btn-default remove-me" aria-label="Remove Ingredient">'
-          newIn += '  <span class="glyphicon glyphicon glyphicon-minus" aria-hidden="true"></span></button></div>'
-          console.log(newIn);
-          var newInput = $(newIn);
-        //  var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
-          //var removeButton = $(removeBtn);
-          $(addto).after(newInput);
-          //$(addRemove).after(removeButton);
-          $("#field" + next).attr('data-source',$(addto).attr('data-source'));
-          $("#count").val(next);  
-          $( "#ingredient-group" ).append( $(newIn) );
-              $('.remove-me').click(function(e){
-                  e.preventDefault();
-                  var fieldNum = this.id.charAt(this.id.length-1);
-                  var fieldID = "#recipeIngredientField" + fieldNum;
-                  $(this).remove();
-                  $(fieldID).remove();
-              });
-      });
-  });*/
+    // adapted from http://bootsnipp.com/snippets/featured/dynamic-form-fields-add-amp-remove
+    /* $(document).ready(function(){
+        var next = 1;
+        $(".add-more").click(function(e){
+            e.preventDefault();
+            console.log("yeah");
+            var addto = "#field" + next;
+            var addRemove = "#field" + (next);
+            next = next + 1;
+            //var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
+            var newIn = '<div class="row" id="recipeIngredientField' + next + '"> <div class="col-sm-9" >'
+            newIn += '<input type="text" name="recipeIngredients' + next + '" class="form-control" id="recipeIngredients' + next + '"" placeholder="Enter the ingredients:">'
+            newIn += '</div>'
+            newIn += '<div class="col-sm-3">'
+            newIn += '<button type="button" class="btn btn-default" aria-label="Add Ingredient">'
+            newIn += '<span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span></button>'
+            newIn += ' <button id="remove' + (next - 1) + '" type="button" class="btn btn-default remove-me" aria-label="Remove Ingredient">'
+            newIn += '  <span class="glyphicon glyphicon glyphicon-minus" aria-hidden="true"></span></button></div>'
+            console.log(newIn);
+            var newInput = $(newIn);
+          //  var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
+            //var removeButton = $(removeBtn);
+            $(addto).after(newInput);
+            //$(addRemove).after(removeButton);
+            $("#field" + next).attr('data-source',$(addto).attr('data-source'));
+            $("#count").val(next);  
+            $( "#ingredient-group" ).append( $(newIn) );
+                $('.remove-me').click(function(e){
+                    e.preventDefault();
+                    var fieldNum = this.id.charAt(this.id.length-1);
+                    var fieldID = "#recipeIngredientField" + fieldNum;
+                    $(this).remove();
+                    $(fieldID).remove();
+                });
+        });
+    });*/
   </script>
 
 </head>
@@ -111,68 +111,54 @@
             <input type="text" name="recipeName" class="form-control" id="recipeName" placeholder="Enter recipe name:">
           </div>
         </div>
+
+        <!-- testing form begin -->
         <div class="col-xs-12">
-          <div class="form-group" id="ingredient-group">
-            <label for="recipeIngredients">Ingredients:</label>
+          <div class="form-group">
+            <label for="recipeDirections">Ingredients:</label>
             <div class="row">
-              <div class="col-sm-9">
-                <input type="text" name="recipeIngredients" class="form-control" id="recipeIngredients" placeholder="Enter the ingredients:">
+              <div class="col-xs-2">
+                <input type="text" class="form-control" name="book[0].title" placeholder="Quantity" />
               </div>
-              <div class="col-sm-3">
-                <button type="button" class="btn btn-default" aria-label="Add Ingredient">
-                  <span class="add-more glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-default" aria-label="Remove Ingredient">
-                  <span class="glyphicon glyphicon glyphicon-minus" aria-hidden="true"></span>
-                </button>
+              <div class="col-xs-3">
+                <input type="text" class="form-control" name="book[0].isbn" placeholder="Metric (optional)" />
+              </div>
+              <div class="col-xs-6">
+                <input type="text" class="form-control" name="book[0].price" placeholder="Ingredient" />
+              </div>
+              <div class="col-xs-1">
+                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
               </div>
             </div>
           </div>
         </div>
-        <!-- testing form begin -->
-
-        <div class="form-group">
-            <label class="col-xs-1 control-label">Book</label>
-            <div class="col-xs-4">
-                <input type="text" class="form-control" name="book[0].title" placeholder="Title" />
-            </div>
-            <div class="col-xs-4">
-                <input type="text" class="form-control" name="book[0].isbn" placeholder="ISBN" />
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" name="book[0].price" placeholder="Price" />
-            </div>
-            <div class="col-xs-1">
-                <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
-            </div>
-        </div>
 
         <!-- The template for adding new field -->
-        <div class="form-group hide" id="bookTemplate">
-            <div class="col-xs-4 col-xs-offset-1">
-                <input type="text" class="form-control" name="title" placeholder="Title" />
-            </div>
-            <div class="col-xs-4">
-                <input type="text" class="form-control" name="isbn" placeholder="ISBN" />
-            </div>
-            <div class="col-xs-2">
-                <input type="text" class="form-control" name="price" placeholder="Price" />
-            </div>
-            <div class="col-xs-1">
-                <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
-            </div>
+        <div class="form-group hide" id="ingredientTemplate">
+          <div class="col-xs-2">
+            <input type="text" class="form-control" name="title" placeholder="Quantity" />
+          </div>
+          <div class="col-xs-3">
+            <input type="text" class="form-control" name="isbn" placeholder="Metric (optional)" />
+          </div>
+          <div class="col-xs-6">
+            <input type="text" class="form-control" name="price" placeholder="Ingredient" />
+          </div>
+          <div class="col-xs-1">
+            <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
+          </div>
         </div>
 
         <!-- testing form end -->
-        
+
         <div class="col-xs-12">
           <div class="form-group">
             <label for="recipeDirections">Directions:</label>
             <div class="row">
-              <div class="col-sm-9">
-               <textarea  name="recipeDirections" rows="10" class="form-control" id="recipeDirections" placeholder="Enter directions (enter each step on a new line):"></textarea>
+              <div class="col-xs-12">
+                <textarea name="recipeDirections" rows="10" class="form-control" id="recipeDirections" placeholder="Enter directions (enter each step on a new line):"></textarea>
               </div>
-          
+
             </div>
           </div>
         </div>
@@ -184,46 +170,6 @@
 
       </form>
     </div>
-    <div id="testing"></div>
-    <form id="bookForm" method="post" class="form-horizontal">
-    <div class="form-group">
-        <label class="col-xs-1 control-label">Book</label>
-        <div class="col-xs-4">
-            <input type="text" class="form-control" name="book[0].title" placeholder="Title" />
-        </div>
-        <div class="col-xs-4">
-            <input type="text" class="form-control" name="book[0].isbn" placeholder="ISBN" />
-        </div>
-        <div class="col-xs-2">
-            <input type="text" class="form-control" name="book[0].price" placeholder="Price" />
-        </div>
-        <div class="col-xs-1">
-            <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
-        </div>
-    </div>
-
-    <!-- The template for adding new field -->
-    <div class="form-group hide" id="bookTemplate">
-        <div class="col-xs-4 col-xs-offset-1">
-            <input type="text" class="form-control" name="title" placeholder="Title" />
-        </div>
-        <div class="col-xs-4">
-            <input type="text" class="form-control" name="isbn" placeholder="ISBN" />
-        </div>
-        <div class="col-xs-2">
-            <input type="text" class="form-control" name="price" placeholder="Price" />
-        </div>
-        <div class="col-xs-1">
-            <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-xs-5 col-xs-offset-1">
-            <button type="submit" class="btn btn-default">Submit</button>
-        </div>
-    </div>
-</form>
 
 
   </div>
@@ -231,7 +177,10 @@
   <script type="text/javascript" src="common/ajax-functions.js"></script>
 
   <script type="text/javascript" src="controllers/userController.client.js"></script>
-    <script type="text/javascript" src="controllers/recipeController.client.js"></script>
+  <script>
+    
+  </script>
+ <script type="text/javascript" src="controllers/recipeController.client.js"></script>
 </body>
 
 </html>
