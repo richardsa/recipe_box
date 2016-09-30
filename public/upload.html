@@ -115,42 +115,42 @@
         <!-- testing form begin -->
         <div class="col-xs-12">
           <div class="form-group">
+
             <label for="recipeDirections">Ingredients:</label>
             <div class="row">
               <div class="col-xs-2">
-                <input type="text" class="form-control" name="book[0].title" placeholder="Quantity" />
+                <input type="text" class="form-control" name="ingredient[0].quantity" placeholder="Quantity" />
               </div>
               <div class="col-xs-3">
-                <input type="text" class="form-control" name="book[0].isbn" placeholder="Metric (optional)" />
+                <input type="text" class="form-control" name="ingredient[0].metric" placeholder="Metric (optional)" />
               </div>
               <div class="col-xs-6">
-                <input type="text" class="form-control" name="book[0].price" placeholder="Ingredient" />
+                <input type="text" class="form-control" name="ingredient[0].ingredient" placeholder="Ingredient" />
               </div>
               <div class="col-xs-1">
                 <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
               </div>
             </div>
+
           </div>
         </div>
 
         <!-- The template for adding new field -->
-        <div class="form-group hide" id="ingredientTemplate">
+        <div class="form-group hide dynamicRow" id="ingredientTemplate">
           <div class="col-xs-2">
-            <input type="text" class="form-control" name="title" placeholder="Quantity" />
+            <input type="text" class="form-control" name="quantity" placeholder="Quantity" />
           </div>
           <div class="col-xs-3">
-            <input type="text" class="form-control" name="isbn" placeholder="Metric (optional)" />
+            <input type="text" class="form-control" name="metric" placeholder="Metric (optional)" />
           </div>
           <div class="col-xs-6">
-            <input type="text" class="form-control" name="price" placeholder="Ingredient" />
+            <input type="text" class="form-control" name="ingredient" placeholder="Ingredient" />
           </div>
           <div class="col-xs-1">
             <button type="button" class="btn btn-default removeButton"><i class="fa fa-minus"></i></button>
           </div>
         </div>
-
         <!-- testing form end -->
-
         <div class="col-xs-12">
           <div class="form-group">
             <label for="recipeDirections">Directions:</label>
@@ -158,7 +158,6 @@
               <div class="col-xs-12">
                 <textarea name="recipeDirections" rows="10" class="form-control" id="recipeDirections" placeholder="Enter directions (enter each step on a new line):"></textarea>
               </div>
-
             </div>
           </div>
         </div>
@@ -167,20 +166,12 @@
             <button id="uploadRecipe" class="btn btn-primary">Add Recipe</button>
           </div>
         </div>
-
       </form>
     </div>
-
-
   </div>
-
   <script type="text/javascript" src="common/ajax-functions.js"></script>
-
   <script type="text/javascript" src="controllers/userController.client.js"></script>
-  <script>
-    
-  </script>
- <script type="text/javascript" src="controllers/recipeController.client.js"></script>
+  <script type="text/javascript" src="controllers/recipeController.client.js"></script>
 </body>
 
 </html>

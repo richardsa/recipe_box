@@ -138,7 +138,7 @@
       //  var recipeName = $("#recipeName").val();
       //  var recipeIngredients = $("#recipeIngredients").val();
       //  var recipeDirections = $("#recipeDirections").val();
-        var uploadURL = appUrl + '/add-recipe/api?recipeName=' + recipeName + '&recipeIngredients=' + recipeIngredients + '&recipeDirections=' + recipeDirections;
+       // var uploadURL = appUrl + '/add-recipe/api?recipeName=' + recipeName + '&recipeIngredients=' + recipeIngredients + '&recipeDirections=' + recipeDirections;
         $.ajax(
         {
             url : 'add-recipe/api',
@@ -147,6 +147,7 @@
             //data: {testing: "testing123"},
             success:function(data, textStatus, jqXHR) 
             {
+             $('#uploadForm').trigger("reset");    
               $("#recipeName").val('');
               $("#recipeDirections").val('');
               $("#recipeIngredients").val('');
