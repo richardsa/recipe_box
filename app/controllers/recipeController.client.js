@@ -1,9 +1,6 @@
 'use strict';
 
 (function() {
-
-
-   
  $(document).ready(function() {
       var quantityValidators = {
           row: '.col-xs-2', // The quantity is placed inside a <div class="col-xs-4"> element
@@ -16,16 +13,8 @@
             }
           }
         },
-        metricValidators = {
-          row: '.col-xs-4',
-          validators: {
-            notEmpty: {
-              message: 'The metric is required'
-            }
-          }
-        },
-        ingredientValidators = {
-          row: '.col-xs-2',
+          ingredientValidators = {
+          row: '.col-xs-6',
           validators: {
             notEmpty: {
               message: 'The ingredient is required'
@@ -43,9 +32,8 @@
             validating: 'glyphicon glyphicon-refresh'
           },
           fields: {
-            'ingredient[0].quantity': quantityValidators,
-            'ingredient[0].metric': metricValidators,
-            'ingredient[0].ingredient': ingredientValidators
+            'recipeIngredient[0].quantity': quantityValidators,
+            'recipeIngredient[0].ingredient': ingredientValidators
           }
         })
 
@@ -62,16 +50,16 @@
 
         // Update the name attributes
         $clone
-          .find('[name="quantity"]').attr('name', 'ingredient[' + ingredientIndex + '].quantity').end()
-          .find('[name="metric"]').attr('name', 'ingredient[' + ingredientIndex + '].metric').end()
-          .find('[name="ingredient"]').attr('name', 'ingredient[' + ingredientIndex + '].ingredient').end();
+          .find('[name="quantity"]').attr('name', 'recipeIngredient[' + ingredientIndex + '].quantity').end()
+          .find('[name="metric"]').attr('name', 'recipeIngredient[' + ingredientIndex + '].metric').end()
+          .find('[name="ingredient"]').attr('name', 'recipeIngredient[' + ingredientIndex + '].ingredient').end();
 
         // Add new fields
         // Note that we also pass the validator rules for new field as the third parameter
         $('#uploadForm')
-          .formValidation('addField', 'ingredient[' + ingredientIndex + '].quantity', quantityValidators)
-          .formValidation('addField', 'ingredient[' + ingredientIndex + '].metric', metricValidators)
-          .formValidation('addField', 'ingredient[' + ingredientIndex + '].ingredient', ingredientValidators);
+          .formValidation('addField', 'recipeIngredient[' + ingredientIndex + '].quantity', quantityValidators)
+        //  .formValidation('addField', 'recipeIngredient[' + ingredientIndex + '].metric', metricValidators)
+          .formValidation('addField', 'recipeIngredient[' + ingredientIndex + '].ingredient', ingredientValidators);
       })
 
       // Remove button click handler
@@ -81,9 +69,9 @@
 
         // Remove fields
         $('#uploadForm')
-          .formValidation('removeField', $row.find('[name="ingredient[' + index + '].quantity"]'))
-          .formValidation('removeField', $row.find('[name="ingredient[' + index + '].metric"]'))
-          .formValidation('removeField', $row.find('[name="ingredient[' + index + '].ingredient"]'));
+          .formValidation('removeField', $row.find('[name="recipeIngredient[' + index + '].quantity"]'))
+          .formValidation('removeField', $row.find('[name="recipeIngredient[' + index + '].metric"]'))
+          .formValidation('removeField', $row.find('[name="recipeIngredient[' + index + '].ingredient"]'));
 
         // Remove element containing the fields
         $row.remove();

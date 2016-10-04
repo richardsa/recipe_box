@@ -119,13 +119,13 @@
             <label for="recipeDirections">Ingredients:</label>
             <div class="row">
               <div class="col-xs-2">
-                <input type="text" class="form-control" name="ingredient[0].quantity" placeholder="Quantity" />
+                <input type="text" class="form-control" name="recipeIngredient[0].quantity" placeholder="Quantity" />
               </div>
               <div class="col-xs-3">
-                <input type="text" class="form-control" name="ingredient[0].metric" placeholder="Metric (optional)" />
+                <input type="text" class="form-control metricField" name="recipeIngredient[0].metric" placeholder="Metric (optional)" />
               </div>
               <div class="col-xs-6">
-                <input type="text" class="form-control" name="ingredient[0].ingredient" placeholder="Ingredient" />
+                <input type="text" class="form-control" name="recipeIngredient[0].ingredient" placeholder="Ingredient" />
               </div>
               <div class="col-xs-1">
                 <button type="button" class="btn btn-default addButton"><i class="fa fa-plus"></i></button>
@@ -141,7 +141,7 @@
             <input type="text" class="form-control" name="quantity" placeholder="Quantity" />
           </div>
           <div class="col-xs-3">
-            <input type="text" class="form-control" name="metric" placeholder="Metric (optional)" />
+            <input type="text" class="form-control metricField" name="metric" placeholder="Metric (optional)" />
           </div>
           <div class="col-xs-6">
             <input type="text" class="form-control" name="ingredient" placeholder="Ingredient" />

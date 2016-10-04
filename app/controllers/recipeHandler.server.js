@@ -10,7 +10,7 @@ function recipeHandler() {
     var twitterID = req.twitter.twitter.id;
     var username = req.twitter.twitter.username;
     var recipeName = req.recipeName;
-    var recipeIngredients = req.recipeIngredients;
+    var recipeIngredients = req.recipeIngredient;
     var recipeDirections = req.recipeDirections;
     console.log(twitterID + " " + username +   " " + recipeName +  " " + recipeIngredients +  " " + recipeDirections);
     Recipes.collection.insert({
@@ -23,7 +23,7 @@ function recipeHandler() {
       if (err) {
         throw err;
       }
-     // console.log(JSON.stringify(updatedResult));
+     console.log("updated results " + JSON.stringify(updatedResult));
       // res.json(updatedResult);
     });
  

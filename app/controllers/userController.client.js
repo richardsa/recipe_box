@@ -133,8 +133,15 @@
     $("#uploadForm").bind('submit', function(e) {
         e.stopImmediatePropagation();
         e.preventDefault();
-        var postData = $(this).serialize();
+      $("#uploadForm .metricField input[type=text]").each(function() {
+            if(!$(this).val()) {
+                console.log("hey brugh");
+                $(this).val('yeah brugh');
+            }
+        });
+var postData = $(this).serialize();
         console.log("post data bruh" + postData);
+      
       //  var recipeName = $("#recipeName").val();
       //  var recipeIngredients = $("#recipeIngredients").val();
       //  var recipeDirections = $("#recipeDirections").val();
